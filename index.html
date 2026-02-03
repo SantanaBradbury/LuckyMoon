@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Question of All Questions 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --parchment: #f4e8d0;
+            --ink: #2a1810;
+            --crimson: #8b2635;
+            --gold: #d4af37;
+            --shadow: rgba(42, 24, 16, 0.15);
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink);
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 20px 10px;
+        }
+
+        /* Floating hearts background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: float 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            animation: sparkleAnimation 1s ease-out forwards;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing orbs background */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.15;
+            animation: orbFloat 20s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, -100px) scale(1.2);
+            }
+            66% {
+                transform: translate(-100px, 100px) scale(0.8);
+            }
+        }
+
+        /* Ornamental corners */
+        .corner-ornament {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .corner-ornament.top-left {
+            top: 20px;
+            left: 20px;
+            background: radial-gradient(circle at top left, var(--gold) 1px, transparent 1px);
+            background-size: 15px 15px;
+            opacity: 0.3;
+        }
+
+        .corner-ornament.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            background: radial-gradient(circle at bottom right, var(--gold) 1px, transparent 1px);
+            background-size: 15px 15px;
+            opacity: 0.3;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid var(--crimson);
+            border-radius: 20px;
+            padding: 60px 50px;
+            max-width: 600px;
+            width: 90%;
+            margin: 20px auto;
+            box-shadow: 
+                0 20px 60px var(--shadow),
+                0 0 0 1px rgba(139, 38, 53, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-align: center;
+            animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1), subtlePulse 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% {
+                box-shadow: 
+                    0 20px 60px var(--shadow),
+                    0 0 0 1px rgba(139, 38, 53, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                box-shadow: 
+                    0 25px 70px var(--shadow),
+                    0 0 30px rgba(139, 38, 53, 0.2),
+                    0 0 0 1px rgba(139, 38, 53, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scripture-reference {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+            animation: fadeIn 1s ease-in 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--crimson);
+            margin-bottom: 30px;
+            line-height: 1.1;
+            animation: fadeIn 1s ease-in 0.5s both;
+            text-shadow: 2px 2px 0 rgba(212, 175, 55, 0.2);
+            position: relative;
+            background: linear-gradient(
+                90deg,
+                var(--crimson) 0%,
+                var(--gold) 50%,
+                var(--crimson) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in 0.5s both, shimmer 3s linear infinite 1.5s;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .theological-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: var(--ink);
+            position: relative;
+            padding: 0 30px;
+            animation: fadeIn 1s ease-in 0.7s both;
+        }
+
+        .theological-quote::before,
+        .theological-quote::after {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            position: absolute;
+            opacity: 0.4;
+        }
+
+        .theological-quote::before {
+            content: '"';
+            left: 0;
+            top: -10px;
+        }
+
+        .theological-quote::after {
+            content: '"';
+            right: 0;
+            bottom: -30px;
+        }
+
+        .attribution {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 40px;
+            font-weight: 600;
+            animation: fadeIn 1s ease-in 0.9s both;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+            color: var(--crimson);
+            animation: fadeIn 1s ease-in 1.1s both;
+        }
+
+        .buttons-container {
+            position: relative;
+            height: 200px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            animation: fadeIn 1s ease-in 1.3s both;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        button {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px var(--shadow);
+            letter-spacing: 1px;
+        }
+
+        #yesBtn {
+            background: var(--crimson);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        #yesBtn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        #yesBtn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            50%, 100% {
+                left: 100%;
+            }
+        }
+
+        #yesBtn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(139, 38, 53, 0.4);
+            animation: none;
+        }
+
+        #noBtn {
+            background: white;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            position: absolute;
+            transition: all 0.2s ease-out;
+        }
+
+        #noBtn:hover {
+            transform: scale(1.05);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
+        }
+
+        .confession {
+            display: none;
+            animation: confessionAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes confessionAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotateY(-20deg);
+            }
+            60% {
+                transform: scale(1.05) rotateY(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0);
+            }
+        }
+
+        .confession h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--crimson);
+            margin-bottom: 25px;
+            font-weight: 700;
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .confession p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            animation: slideUp 0.5s ease-out both;
+        }
+
+        .confession p:nth-child(2) { animation-delay: 0.5s; }
+        .confession p:nth-child(3) { animation-delay: 0.7s; }
+        .confession p:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hearts-explosion {
+            font-size: 2rem;
+            margin-top: 20px;
+            animation: heartbeat 1s infinite, spinScale 2s ease-in-out infinite;
+        }
+
+        @keyframes spinScale {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 40px 30px;
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            .theological-quote {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+
+            .question {
+                font-size: 1.3rem;
+            }
+
+            .buttons-container {
+                height: 150px;
+                gap: 20px;
+            }
+
+            button {
+                font-size: 1.1rem;
+                padding: 15px 35px;
+            }
+
+            .confession h2 {
+                font-size: 2rem;
+            }
+
+            .confession p {
+                font-size: 1.1rem;
+            }
+
+            #dodgeMessage {
+                font-size: 0.8rem;
+                margin-top: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .theological-quote {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .question {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+
+            .buttons-container {
+                height: 120px;
+                gap: 15px;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .confession h2 {
+                font-size: 1.7rem;
+            }
+
+            .confession p {
+                font-size: 1rem;
+            }
+
+            .hearts-explosion {
+                font-size: 1.5rem;
+            }
+
+            #dodgeMessage {
+                font-size: 0.75rem;
+                margin-top: 110px;
+            }
+
+            .corner-ornament {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- "Faith is taking the first step even when you don't see the whole staircase." - MLK Jr. -->
+    <!-- But clicking 'Yes' is easier than faith, I promise 😊 -->
+    
+    <!-- Floating hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Glowing orbs (representing the divine light, or just pretty colors) -->
+    <div class="orb" style="width: 300px; height: 300px; background: var(--crimson); top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="orb" style="width: 250px; height: 250px; background: var(--gold); bottom: 10%; right: 10%; animation-delay: -5s;"></div>
+    <div class="orb" style="width: 200px; height: 200px; background: var(--crimson); top: 50%; left: 80%; animation-delay: -10s;"></div>
+
+    <!-- Corner ornaments -->
+    <div class="corner-ornament top-left"></div>
+    <div class="corner-ornament bottom-right"></div>
+
+    <div class="container" data-easter-egg="Romans 8:28 - All things work together for good... including this website 💕">
+        <div id="questionSection">
+            <div class="scripture-reference">An Important Theological Question</div>
+            
+            <h1>Be My Valentine?</h1>
+            
+            <p class="theological-quote">
+                After much prayer and contemplation<br>
+                (and possibly some divine intervention),<br>
+                I've reached a conclusion more certain than Anselm's ontological argument...
+            </p>
+            
+            <p class="attribution">I really like you 💕</p>
+            
+            <p class="question">
+                Will you be my Valentine?<br>
+                <span style="font-size: 0.9rem; opacity: 0.8;">(This question is infallible, by the way)</span>
+            </p>
+            
+            <div class="buttons-container">
+                <button id="yesBtn" onclick="handleYes()">YES!</button>
+                <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+            </div>
+            
+            <p id="dodgeMessage" style="font-size: 0.85rem; margin-top: 160px; opacity: 0.6; font-style: italic;">
+                *The "No" button is experiencing an existential crisis... 🤔
+            </p>
+        </div>
+
+        <div class="confession" id="confessionSection">
+            <h2>🎉 YAYYYYYYY!!! 🎉</h2>
+            <p>
+                <strong>Thesis:</strong> You said yes!<br>
+                <strong>Antithesis:</strong> I can't believe it!<br>
+            </p>
+            <p>
+                Our conversations have been better than Luther's 95 Theses,<br>
+                sweeter than Calvin's doctrine of election,<br>
+                and way more fun than Aquinas's Five Ways.
+            </p>
+            <p>
+                I'd go through Dante's nine circles just to see you smile,<br>
+                debate Pelagius all night if it meant I get to see you,<br>
+                and even attend a church potluck with you. 
+            </p>
+            <p style="font-size: 0.95rem; opacity: 0.8;">
+                (Yes, the church potluck thing means it's serious.)
+            </p>
+            <div class="hearts-explosion">
+                💕 ✨ 💖 ✨ 💕
+            </div>
+            <p class="signature">
+                Soli Deo Gloria (and also you),<br>
+                Your Valentine 💌
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 25px; opacity: 0.7; font-style: italic;">
+                P.S. - I built this website using predestination... I mean, JavaScript. The "No" button never had free will. 😉
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => heart.remove(), 8000);
+        }
+
+        // Generate multiple hearts
+        for (let i = 0; i < 20; i++) {
+            createHeart();
+        }
+
+        // Continuously create new hearts
+        setInterval(createHeart, 400);
+
+        // Mouse sparkle trail
+        let sparkleTimeout;
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(sparkleTimeout);
+            sparkleTimeout = setTimeout(() => {
+                if (Math.random() > 0.7) { // 30% chance per movement
+                    createSparkle(e.clientX, e.clientY);
+                }
+            }, 50);
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['✨', '⭐', '💫', '🌟'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Move the "No" button
+        let dodgeCount = 0;
+        const dodgeMessages = [
+            "*The 'No' button is experiencing an existential crisis... 🤔",
+            "*Even Pontius Pilate was more decisive than this! 😅",
+            "*This button practices the via negativa (the way of negation) 🏃‍♂️",
+            "*Having a Job-level patience test with this button... 😤",
+            "*This button studied under Søren Kierkegaard - it loves the leap! 🦘",
+            "*The 'No' button has taken a vow of mobility 🙏",
+            "*Even the Israelites' 40 years of wandering was more direct than this 🗺️",
+            "*This button believes in works-based salvation... lots of work for you! 💪",
+            "*Fun fact: Augustine wrote 'Confessions' in less time than you've chased this button 📖",
+            "*The 'No' button said 'Let there be distance' and there was distance ✨"
+        ];
+
+        function moveButton() {
+            const button = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons-container');
+            const messageElement = document.getElementById('dodgeMessage');
+            
+            // Create sparkles at button position
+            const rect = button.getBoundingClientRect();
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        rect.left + rect.width / 2 + (Math.random() - 0.5) * 50,
+                        rect.top + rect.height / 2 + (Math.random() - 0.5) * 50
+                    );
+                }, i * 100);
+            }
+            
+            // Get container dimensions
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            // Calculate random position within container with padding
+            const padding = 10;
+            const maxX = containerRect.width - buttonRect.width - (padding * 2);
+            const maxY = containerRect.height - buttonRect.height - (padding * 2);
+            
+            // Ensure we don't go negative
+            const safeMaxX = Math.max(0, maxX);
+            const safeMaxY = Math.max(0, maxY);
+            
+            const randomX = padding + (Math.random() * safeMaxX);
+            const randomY = padding + (Math.random() * safeMaxY);
+            
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            
+            // Add a little rotation for extra playfulness
+            const randomRotate = (Math.random() - 0.5) * 15;
+            button.style.transform = `rotate(${randomRotate}deg)`;
+            
+            // Update message
+            if (dodgeCount < dodgeMessages.length) {
+                messageElement.style.animation = 'none';
+                setTimeout(() => {
+                    messageElement.textContent = dodgeMessages[dodgeCount];
+                    messageElement.style.animation = 'fadeIn 0.5s ease-in';
+                }, 10);
+                dodgeCount++;
+            } else {
+                // Secret Easter egg after all messages
+                messageElement.innerHTML = `
+                    <span style="font-size: 0.95rem; color: var(--gold); font-weight: 600;">
+                        "The mystery of love, like the Trinity, cannot be fully comprehended—<br>
+                        only experienced. So maybe just click 'Yes'?" 
+                        <span style="font-size: 1.2rem;">😇</span>
+                    </span>
+                `;
+                messageElement.style.opacity = 1;
+            }
+            
+            // Make the Yes button grow slightly after each dodge
+            const yesBtn = document.getElementById('yesBtn');
+            const currentScale = 1 + (dodgeCount * 0.05);
+            yesBtn.style.transform = `scale(${currentScale})`;
+            
+            // After 5 dodges, add a halo effect to Yes button
+            if (dodgeCount >= 5) {
+                yesBtn.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.6), 0 6px 25px rgba(139, 38, 53, 0.4)';
+            }
+        }
+
+        // Handle "Yes" response
+        function handleYes() {
+            const questionSection = document.getElementById('questionSection');
+            const confessionSection = document.getElementById('confessionSection');
+            
+            // Create massive heart explosion
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createHeart();
+                    // Also create sparkles
+                    createSparkle(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 50);
+            }
+            
+            // Fade out question, fade in confession
+            questionSection.style.animation = 'fadeOut 0.5s ease-out forwards';
+            setTimeout(() => {
+                questionSection.style.display = 'none';
+                confessionSection.style.display = 'block';
+            }, 500);
+            
+            // Animate the container
+            const container = document.querySelector('.container');
+            setTimeout(() => {
+                container.style.animation = 'confessionAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            }, 500);
+        }
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize the No button position
+        window.addEventListener('load', () => {
+            const button = document.getElementById('noBtn');
+            button.style.position = 'absolute';
+            
+            // Easter egg for the curious theology student who opens dev tools
+            console.log('%c📜 Theological Easter Egg Found! 📜', 'font-size: 20px; color: #8b2635; font-weight: bold;');
+            console.log('%cYou opened the console! As a theology student, you understand the importance of examining the source.', 'font-size: 14px; color: #d4af37;');
+            console.log('%c\n"For now we see through a glass, darkly; but then face to face" - 1 Cor 13:12', 'font-style: italic; color: #2a1810;');
+            console.log('%c\nJust like examining scripture, you\'ve examined the code. Impressive! 🎓', 'color: #8b2635;');
+            console.log('%c\nBut the real question remains: Will you click "Yes"? 💕', 'font-size: 16px; color: #d4af37; font-weight: bold;');
+            console.log('%c\n(P.S. - The "No" button is predestined to run away. Calvinist humor.) 😄', 'color: #666;');
+        });
+    </script>
+</body>
+</html>
