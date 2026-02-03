@@ -304,6 +304,9 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 15px var(--shadow);
             letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
         }
 
         #yesBtn {
@@ -607,7 +610,7 @@
                 I've reached a conclusion more certain than Anselm's ontological argument...
             </p>
             
-            <p class="attribution">I really like you 💕</p>
+            <p class="attribution">I really like you💕</p>
             
             <p class="question">
                 Will you be my Valentine?<br>
@@ -615,8 +618,8 @@
             </p>
             
             <div class="buttons-container">
-                <button id="yesBtn" onclick="handleYes()">YES!</button>
-                <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+                <button id="yesBtn" onclick="handleYes()">YES! 😊</button>
+                <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()" ontouchstart="moveButton(event)">No</button>
             </div>
             
             <p id="dodgeMessage" style="font-size: 0.85rem; margin-top: 160px; opacity: 0.6; font-style: italic;">
@@ -625,7 +628,7 @@
         </div>
 
         <div class="confession" id="confessionSection">
-            <h2>🎉 YAYYYYYYY!!! 🎉</h2>
+            <h2>🎉 YAYYYYY!! 🎉</h2>
             <p>
                 <strong>Thesis:</strong> You said yes!<br>
                 <strong>Antithesis:</strong> I can't believe it!<br>
@@ -638,7 +641,7 @@
             <p>
                 I'd go through Dante's nine circles just to see you smile,<br>
                 debate Pelagius all night if it meant I get to see you,<br>
-                and even attend a church potluck with you. 
+                and even attend a church potluck with you.
             </p>
             <p style="font-size: 0.95rem; opacity: 0.8;">
                 (Yes, the church potluck thing means it's serious.)
@@ -717,7 +720,12 @@
             "*The 'No' button said 'Let there be distance' and there was distance ✨"
         ];
 
-        function moveButton() {
+        function moveButton(event) {
+            // Prevent default behavior for touch events
+            if (event && event.type === 'touchstart') {
+                event.preventDefault();
+            }
+            
             const button = document.getElementById('noBtn');
             const container = document.querySelector('.buttons-container');
             const messageElement = document.getElementById('dodgeMessage');
